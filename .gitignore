@@ -1,0 +1,4 @@
+**/node_modules
+**/*/.git
+lib
+pnpm-debug.log

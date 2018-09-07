@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./",
+        "allowSyntheticDefaultImports": true,
+        "declaration": false,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "downlevelIteration": true,
+        "importHelpers": true,
+        "esModuleInterop": true,
+        "lib": [
+            "ESNext",
+            "DOM",
+            "DOM.Iterable"
+        ],
+        "module": "umd",
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "target": "ESNext",
+        "traceResolution": false,
+        "outDir": "lib"
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}
