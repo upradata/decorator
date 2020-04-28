@@ -13,10 +13,9 @@
     "description": "Set of typescript decorators",
     "main": "lib",
     "types": "lib",
-    "module": "lib-esm",
+    "module": "lib",
     "files": [
-        "lib",
-        "lib-esm"
+        "lib"
     ],
     "scripts": {
         "test": "jest --verbose false --config jest-ut.config.js",
