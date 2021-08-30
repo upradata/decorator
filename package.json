@@ -1,64 +1,62 @@
 {
-	"name": "@upradata/decorator",
-	"author": {
-		"name": "Thomas Milotti",
-		"email": "thomas.milotti@gmail.com",
-		"url": "https://github.com/milottit"
-	},
-	"repository": {
-		"url": ""
-	},
-	"license": "MIT",
-	"version": "1.0.1",
-	"description": "Set of typescript decorators",
-	"main": "lib",
-	"types": "lib",
-	"module": "lib",
-	"files": [
-		"lib"
-	],
-	"scripts": {
-		"test": "jest --verbose false --config jest-ut.config.js",
-		"e2e": "jest --passWithNoTests --verbose false --config jest-e2e.config.js",
-		"clean": "shx rm -rf lib lib-esm",
-		"watch": "concurrently 'tsc -w' 'tsc -w -m es6 --outDir lib-esm'",
-		"prebuild": "npm run clean",
-		"build": "tsc -p ./tsconfig.src.json",
-		"postbuild": "npm run test && npm run e2e",
-		"build:only": "npm run prebuild && tsc && tsc -m es6 --outDir lib-esm",
-		"build:watch": "npm run tsc -w",
-		"github-push": "npm run build && npm version patch && git push && git push --tags",
-		"npm-publish": "npm run build && npm publish --access public"
-	},
-	"dependencies": {
-		"@angular/core": "^9.1.11",
-		"tslib": "^2.0.0"
-	},
-	"devDependencies": {
-		"@types/node": "^14.0.13",
-		"concurrently": "^5.2.0",
-		"fixed-width-string": "^2.0.0",
-		"jest": "^26.0.1",
-		"reflect-metadata": "^0.1.13",
-		"rxjs": "^6.5.5",
-		"shx": "^0.3.2",
-		"ts-jest": "^26.1.0",
-		"ts-node": "^8.10.2",
-		"tsconfig-paths": "^3.9.0",
-		"tslint": "^6.1.2",
-		"typescript": "^3.9.5"
-	},
-	"keywords": [
-		"typescript",
-		"decorators"
-	],
-	"publishConfig": {
-		"access": "public"
-	},
-	"local": {
-		"dependencies": {
-			"@upradata/node-util": "link:/home/milottit/Libraries/Util/node-util@2.0.3",
-			"@upradata/util": "link:/home/milottit/Libraries/Util/util@1.0.24"
-		}
-	}
+    "name": "@upradata/decorator",
+    "author": {
+        "name": "Thomas Milotti",
+        "email": "thomas.milotti@gmail.com",
+        "url": "https://github.com/milottit"
+    },
+    "repository": {
+        "url": "https://github.com/upradata/decorator"
+    },
+    "license": "MIT",
+    "version": "2.0.1",
+    "description": "Set of typescript decorators",
+    "sideEffects": false,
+    "main": "lib",
+    "types": "lib-esm",
+    "module": "lib-esm",
+    "files": [
+        "lib",
+        "lib-esm"
+    ],
+    "scripts": {
+        "clean": "shx rm -rf lib lib-esm",
+        "pre-build": "pnpm run clean",
+        "build": "concurrently 'tsc -p tsconfig.lib.json' 'tsc -p tsconfig.lib-esm.json'",
+        "post-build": "pnpm run test && npm run e2e",
+        "watch": "pnpm run build:watch",
+        "build:watch": "concurrently 'tsc -p tsconfig.lib.json -w' 'tsc -p tsconfig.lib-esm.json -w'",
+        "test": "pnpm jest --passWithNoTests --verbose false --config jest-ut.config.js",
+        "e2e": "pnpm jest --passWithNoTests --verbose false --config jest-e2e.config.js",
+        "github-push": "pnpm run build && npm version patch && git pushall && git pushall-tags",
+        "npm-publish": "pnpm run build && npm publish --access public"
+    },
+    "devDependencies": {
+        "@angular/core": "^12.2.3",
+        "@types/node": "^16.7.8",
+        "concurrently": "^6.2.1",
+        "fixed-width-string": "^2.0.0",
+        "jest": "^27.1.0",
+        "reflect-metadata": "^0.1.13",
+        "rxjs": "^7.3.0",
+        "shx": "^0.3.3",
+        "ts-jest": "^27.0.5",
+        "typescript": "^4.4.2"
+    },
+    "peerDependencies": {
+        "@angular/core": "^12.2.3",
+        "rxjs": "^7.3.0"
+    },
+    "keywords": [
+        "typescript",
+        "decorators"
+    ],
+    "publishConfig": {
+        "access": "public"
+    },
+    "local": {
+        "dependencies": {
+            "@upradata/util": "link:/home/milottit/Libraries/Upra-Data/util@12.0.1"
+        }
+    }
 }

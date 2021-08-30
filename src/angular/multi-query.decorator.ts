@@ -3,7 +3,6 @@ import {
     ViewChildDecorator, ViewChildrenDecorator, ContentChildrenDecorator, ContentChildDecorator
 } from '@angular/core';
 
-import { isBoolean } from '@upradata/util';
 
 // original https://medium.com/@a.yurich.zuev/angular-viewchild-how-to-read-multiple-instances-cde38ef19041
 
@@ -68,13 +67,16 @@ export function MultiQuery<Component, Directive, Service>(
                 queryDecoratorsFactory[ firstSmallLetter((o.read as any).name) ] = qDecorator(selector, o);
             else {
                 // o = { component, directive, service }
-                for (let [ k, v ] of Object.values(o.read)) {
-                    if (v === true)
-                        v = undefined; // component: true
-                    else
+                for (const [ k, v ] of Object.values(o.read)) {
+                    if (v !== true)
                         continue;
 
-                    queryDecoratorsFactory[ firstSmallLetter(k) ] = qDecorator(selector, { read: v });
+                    /* if (v === true)
+                        v = undefined; // component: true
+                    else
+                        continue; */
+
+                    queryDecoratorsFactory[ firstSmallLetter(k) ] = qDecorator(selector, { read: undefined /* v */ });
                 }
 
             }
@@ -92,6 +94,7 @@ export function MultiQuery<Component, Directive, Service>(
 
             Object.defineProperty(target, name, {
                 // tslint:disable-next-line:object-literal-shorthand
+                // eslint-disable-next-line object-shorthand
                 get: function () {
                     // return decs.map((x, i) => this[`${name}_${i}`], this);
                     const targetObj = {};
