@@ -9,7 +9,7 @@
         "url": "https://github.com/upradata/decorator"
     },
     "license": "MIT",
-    "version": "2.0.2",
+    "version": "2.0.3",
     "description": "Set of typescript decorators",
     "sideEffects": false,
     "main": "lib",
