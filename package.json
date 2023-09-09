@@ -58,6 +58,10 @@
     "local": {
         "dependencies": {
             "@upradata/util": "link:/home/milottit/Libraries/Upra-Data/util@13.0.1"
+        },
+        "usedBy": {
+            "@upradata/stencil-components": "/home/milottit/Libraries/Tilda/stencil-components",
+            "@upradata/tilda-stencil-components": "/home/milottit/Libraries/Tilda/stencil-components"
         }
     }
 }
